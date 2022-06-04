@@ -4,11 +4,156 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ECS 171 Demo</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{url_for('static', filename='style.css')}}"
+    />
   </head>
 
   <body>
-    <div>
-      <h1>Hello World</h1>
+    <div class="container">
+      <div class="column">
+        <h1>Can flag metrics predict land mass?</h1>
+        <h3>Neural Network</h3>
+        <p>
+          <span style="text-decoration: underline">Training Error:</span> {{
+          land_train_score }}
+        </p>
+        <p>
+          <span style="text-decoration: underline">Training Accuracy:</span> {{
+          land_train_acc }}
+        </p>
+        <p>
+          <span style="text-decoration: underline">Test Error:</span> {{
+          land_test_score }}
+        </p>
+        <p>
+          <span style="text-decoration: underline">Test Accuracy:</span> {{
+          land_test_acc }}
+        </p>
+        <p>
+          Best: {{ land_grid_result_score }} using {{ land_grid_result_params }}
+        </p>
+        <img
+          src="../static/images/land-loss-plot.png"
+          alt="Chart"
+          width="300"
+          height="200"
+        />
+        <img
+          src="../static/images/land-acc-plot.png"
+          alt="Chart"
+          width="300"
+          height="200"
+        />
+        <h3>Decision Tree</h3>
+        <p>
+          <span style="text-decoration: underline">Accuracy:</span> {{
+          land_DT_acc }}
+        </p>
+        <div class="container">
+          <div class="column">
+            <p style="text-decoration: underline">Classification Report</p>
+            <table>
+              <h2>
+                {% for table in land_DT_tables %}
+                <h3>{{titles[loop.index]}}</h3>
+                {{ table|safe }} {% endfor %}
+              </h2>
+            </table>
+          </div>
+          <div class="column" style="margin-left: 2em">
+            <p style="text-decoration: underline">Confusion Matrix</p>
+            {% for row in land_DT_conf_matrix %}
+            <p>{{row}}</p>
+            {% endfor %}
+          </div>
+        </div>
+        <h3>SVM</h3>
+        <table>
+          <p style="text-decoration: underline">Classification Report</p>
+          <h2>
+            {% for table in land_SVM_tables %}
+            <h3>{{titles[loop.index]}}</h3>
+            {{ table|safe }} {% endfor %}
+          </h2>
+        </table>
+      </div>
+      <div class="column">
+        <h1>Can flag metrics predict language?</h1>
+        <h3>Neural Network</h3>
+        <p>
+          <span style="text-decoration: underline">Training Error:</span> {{
+          lang_train_score }}
+        </p>
+        <p>
+          <span style="text-decoration: underline">Training Accuracy:</span> {{
+          lang_train_acc }}
+        </p>
+        <p>
+          <span style="text-decoration: underline">Test Error:</span> {{
+          lang_test_score }}
+        </p>
+        <p>
+          <span style="text-decoration: underline">Test Accuracy:</span> {{
+          lang_test_acc }}
+        </p>
+        <p>
+          Best: {{ lang_grid_result_score }} using {{ lang_grid_result_params }}
+        </p>
+        <img
+          src="../static/images/lang-loss-plot.png"
+          alt="Chart"
+          width="300"
+          height="200"
+        />
+        <img
+          src="../static/images/lang-acc-plot.png"
+          alt="Chart"
+          width="300"
+          height="200"
+        />
+        <h3>Decision Tree</h3>
+        <p>
+          <span style="text-decoration: underline">Accuracy:</span> {{
+          land_DT_acc }}
+        </p>
+        <div class="container">
+          <div class="column">
+            <p style="text-decoration: underline">Classification Report</p>
+            <table>
+              <h2>
+                {% for table in lang_DT_tables %}
+                <h3>{{titles[loop.index]}}</h3>
+                {{ table|safe }} {% endfor %}
+              </h2>
+            </table>
+          </div>
+          <div class="column" style="margin-left: 2em">
+            <p style="text-decoration: underline">Confusion Matrix</p>
+            {% for row in lang_DT_conf_matrix %}
+            <p>{{row}}</p>
+            {% endfor %}
+          </div>
+        </div>
+        <h3>SVM</h3>
+        <table>
+          <p style="text-decoration: underline">Classification Report</p>
+          <h2>
+            {% for table in lang_SVM_tables %}
+            <h3>{{titles[loop.index]}}</h3>
+            {{ table|safe }} {% endfor %}
+          </h2>
+        </table>
+      </div>
+      <!-- <div class="column">
+        <p>Hello World</p>
+        <p>Training Error: {{ land_train_score }}</p>
+        <p>Training Accuracy: {{ land_train_acc }}</p>
+        <p>Test Error: {{ land_test_score }}</p>
+        <p>Test Accuracy: {{ land_test_acc }}</p>
+      </div> -->
     </div>
   </body>
 </html>

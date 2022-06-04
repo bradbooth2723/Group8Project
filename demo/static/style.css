@@ -1,0 +1,57 @@
+body {
+  background-color: lightblue;
+}
+
+.container {
+  display: flex;
+}
+
+/* .column {
+  width: 50%;
+  float: left;
+  padding: 20px;
+  border-color: black;
+} */
+
+.column {
+  flex: 1;
+}
+
+.plot {
+  display: inline-block;
+  vertical-align: top;
+}
+
+/* .left {
+  float: left;
+  width: 49%;
+}
+
+.right {
+  float: right;
+  width: 49%;
+} */
+
+.helper {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+
+.wrapper {
+  white-space: nowrap;
+
+  /* text-align: center; */
+  margin: 1em 0;
+}
+
+img {
+  vertical-align: middle;
+}
+
+/* .column {
+  width: 50%;
+  float: left;
+  padding: 20px;
+  border-color: black;
+} */
